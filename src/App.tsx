@@ -7,6 +7,7 @@ import { Global, ThemeProvider } from "@emotion/react";
 import theme from "./assets/theme";
 import { global } from "./assets/Global";
 import { LoginProvider } from "./context/LoginContext";
+import Header from "./components/Layout/Header";
 
 function App() {
   return (
