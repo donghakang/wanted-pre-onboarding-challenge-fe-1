@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TodoProps } from '../../../@types/todo'
 import { useLoginState } from '../../../context/LoginContext'
 import { createTodo } from '../../../helper/api'
 import { Button } from '../../Button'
@@ -23,7 +22,8 @@ export const AddTodo: React.FC<{ refresh: () => void }> = ({ refresh }) => {
   function handleCreateTodo() {
     createTodo(title, content, token)
       .then((res) => res.json())
-      .then((data: { data: TodoProps | undefined }) => {
+      .then(() => {
+        //data: { data: TodoProps | undefined }
         refresh()
       })
       .then(() => navigate('/'))

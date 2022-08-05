@@ -55,7 +55,8 @@ const TodoList: React.FC<TodoListProps> = ({ data, refresh }) => {
   function handleDeleteTodo(id: string) {
     deleteTodo(id, token)
       .then((res) => res.json())
-      .then((data) => {
+      .then(() => {
+        //data: { data: TodoProps | undefined }
         refresh()
       })
       .catch((err) => console.error(err))

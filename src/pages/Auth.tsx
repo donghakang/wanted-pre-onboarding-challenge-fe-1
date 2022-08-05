@@ -3,7 +3,6 @@ import { Link, Navigate } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { IdInput, PasswordInput } from '../components/Input'
 import Layout from '../components/Layout/Layout'
-import { useLoginDispatch } from '../context/LoginContext'
 import { fetchLogin } from '../helper/api'
 import { isEmail, isPassword, useLogin } from '../helper/login'
 import * as S from './style'
@@ -36,7 +35,7 @@ const AuthPage = () => {
     setPassword(password)
   }
 
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+  function handleClick() {
     fetchLogin(email, password)
       .then((res) => res.json())
       .then((data) => {

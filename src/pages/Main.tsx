@@ -8,6 +8,7 @@ const MainPage = () => {
   // check if it is logged in (localStorage)
   const { token } = useLoginState()
   const dispatch = useLoginDispatch()
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {

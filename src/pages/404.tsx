@@ -1,8 +1,8 @@
 import React from 'react'
-import Layout from '../components/Layout/Layout'
+import { Navigate } from 'react-router-dom'
 
 const NotFoundPage = () => {
-  return <Layout>404</Layout>
+  return <Navigate to="/" />
 }
 
 export default NotFoundPage

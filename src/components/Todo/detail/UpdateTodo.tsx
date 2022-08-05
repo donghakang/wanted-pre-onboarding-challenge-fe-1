@@ -40,7 +40,8 @@ export const UpdateTodo: React.FC<{ refresh: () => void }> = ({ refresh }) => {
     if (id !== null) {
       updateTodo(id, title, content, token)
         .then((res) => res.json())
-        .then((data: { data: TodoProps | undefined }) => {
+        .then(() => {
+          // data: { data: TodoProps | undefined }
           refresh()
         })
         .then(() => navigate('/'))

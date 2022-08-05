@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BiDetail } from 'react-icons/bi'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { TodoProps } from '../@types/todo'
 
 import { Todo, TodoList } from '../components/Todo'
@@ -32,12 +32,14 @@ const TodoPage: React.FC = () => {
       })
   }
 
+  // token이 바뀔때마다 업데이트 된다.
   useEffect(() => {
     if (token) {
       refresh()
     }
   }, [token])
 
+  // RENDER
   const RenderTodo = () => {
     if (mode === undefined) {
       // query 없으면 TodoList 컴포넌트를 보여준다.
