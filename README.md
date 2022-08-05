@@ -1,6 +1,24 @@
-# 1-2) 클라이언트 구현 과제 안내
+# 👋🏻 안녕하세요, FE 개발자 강동하입니다.
 
-## Assignment 1 - Login / SignUp
+<p align="center"><img src="https://user-images.githubusercontent.com/50029346/183016568-00eb9a6a-6c27-4fb8-a867-dc71f011aaf5.png" width="280px" height="280px" style="border-radius: 50%"/></p>
+
+
+#### 🎉 저는 현재,
+
+서울대학교병원에서 진행하는 연구의 일원으로 웹 개발을 주로 담당하고 있습니다. 현재 제가 개발한 웹 소프트웨어(DICOM-Web-Viewer)는 CT이미지를 웹상에서 보여주는 웹사이트이며 React, TypeScript, PWA, gitflow 등 다양한 기술을 접했으며 현재 11개의 병원 영상의학과에서 사용중입니다. 또한 이 DICOM Viewer를 접한 MD.ai 과 Gradient Health(메디컬 이미징 회사)에서 협업 제안도 받았었습니다.
+
+#### 👨🏻‍💻 저는 개발자로서,
+
+저는 단순히 코딩을 하는 프로그래머가 아닌 세상에 있는 문제를 해결하는 개발자가 되어 사용자들에게 편리하고 필요한 것을 찾으려고 노력합니다. 이를 성취하기 위해 개발 동아리(Prography)에서 활발하게 활동하며 서비스를 배포한 경험이 있고, 현재는 다양한 분야의 개발자들과 MAU 1000명을 달성하기 위한 대규모 프로젝트도 진행하고 있습니다.
+저는 서비스를 더욱 더 개선하기 위해 사용자들과 소통을 아끼지 않는 개발자입니다. 현재 병원에서 개발한 웹사이트도 마찬가지로 배포에서 멈추지 않고 Iowa 대학병원, 서울대병원 외 11개의 병원 사용자들과 주기적으로 미팅을 가지며 UI/UX 를 개선해 나가고 있고 거기에서 굉장한 뿌듯함과 행복을 얻습니다.
+
+---
+
+## Assignment
+
+Assignment 링크: [https://wanted-pre-onboarding-donghakang.netlify.app](https://wanted-pre-onboarding-donghakang.netlify.app)
+
+### Assignment 1 - Login / SignUp
 
 - /auth 경로에 로그인 / 회원가입 기능을 개발합니다
   - 로그인, 회원가입을 별도의 경로로 분리해도 무방합니다
@@ -14,7 +32,7 @@
   - [x] 다음 번에 로그인 시 토큰이 존재한다면 루트 경로로 리다이렉트 시켜주세요 --> 새로 고침을 할때 그 현재 상태가 유지 됩니다!
   - [x] 어떤 경우든 토큰이 유효하지 않다면 사용자에게 알리고 로그인 페이지로 리다이렉트 시켜주세요 --> 로컬 스토리지에 저장하기 때문에 영구적이긴 하지만 대신 로그아웃을 구현했습니다.
 
-## Assignment 2 - Todo List
+### Assignment 2 - Todo List
 
 - Todo List API를 호출하여 Todo List CRUD 기능을 구현해주세요
   - [x] 목록 / 상세 영역으로 나누어 구현해주세요
@@ -29,7 +47,7 @@
 
   - [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영되어야 합니다
 
-## 과제 참고 사항 - edit
+### 과제 추가 - edit
 
 - API 명세서에 있는 API의 리턴값이 실제 리턴값과 다릅니다.
   명세서에는 `createTodo`, `updateTodo`, `deleteTodo`의 리턴값이 모든 todos 이었지만, 실제 리턴값은 빈 오브젝트입니다.
