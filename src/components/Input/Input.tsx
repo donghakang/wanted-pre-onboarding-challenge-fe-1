@@ -7,6 +7,12 @@ interface InputProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
+interface TextAreaProps {
+  placeholder?: string
+  value?: string
+  handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+}
+
 export const IdInput: React.FC<InputProps> = ({
   handleChange,
   placeholder,
@@ -37,6 +43,20 @@ export const Input: React.FC<InputProps> = ({
   return (
     <S.PasswordInput
       type="text"
+      value={value}
+      placeholder={placeholder}
+      onChange={handleChange}
+    />
+  )
+}
+
+export const TextArea: React.FC<TextAreaProps> = ({
+  handleChange,
+  placeholder,
+  value,
+}) => {
+  return (
+    <S.TextArea
       value={value}
       placeholder={placeholder}
       onChange={handleChange}

@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import { BiDetail } from 'react-icons/bi'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { TodoProps } from '../@types/todo'
+
 import { Todo, TodoList } from '../components/Todo'
 import { AddTodo } from '../components/Todo/detail/AddTodo'
 import { UpdateTodo } from '../components/Todo/detail/UpdateTodo'
 import { useLoginState } from '../context/LoginContext'
 import { getTodos } from '../helper/api'
+import * as S from './style'
 
 const TodoPage: React.FC = () => {
   const { token } = useLoginState()
+  const { mode } = useParams()
+  const urlParams = new URLSearchParams(location.search)
+  const id = urlParams.get('id')
   const [data, setData] = useState<TodoProps[]>([])
-  const [mode, setMode] = useState<'detail' | 'update' | 'create' | ''>('')
-  const [currentData, setCurrentData] = useState<string>('')
 
   function refresh() {
     getTodos(token)
@@ -33,20 +38,37 @@ const TodoPage: React.FC = () => {
     }
   }, [token])
 
+  const RenderTodo = () => {
+    if (mode === undefined) {
+      // query 없으면 TodoList 컴포넌트를 보여준다.
+      return (
+        <section className="list">
+          <TodoList data={data} refresh={refresh} />
+        </section>
+      )
+    } else {
+      return (
+        <section className="todo">
+          {mode === 'detail' && id !== null && <Todo id={id} />}
+          {mode === 'create' && <AddTodo refresh={refresh} />}
+          {mode === 'update' && id !== null && <UpdateTodo refresh={refresh} />}
+        </section>
+      )
+    }
+  }
+
   return (
-    <div>
-      <TodoList
-        data={data}
-        handleItemClick={setCurrentData}
-        setMode={setMode}
-        refresh={refresh}
-      />
-      <button onClick={() => setMode('create')}>추가하기</button>
-      {mode === 'detail' && <Todo id={currentData} />}
-      {mode === 'create' && <AddTodo refresh={refresh} />}
-      {mode === 'update' && <UpdateTodo id={currentData} refresh={refresh} />}
-      {/* <UpdateTodo id={currentData} refresh={refresh} /> */}
-    </div>
+    <S.Todo>
+      {mode !== undefined && (
+        <Link to={'/'} className="todo-button menu-button">
+          <BiDetail size={20} />
+        </Link>
+      )}
+      <Link to={'/create'} className="todo-button create-button">
+        추가하기
+      </Link>
+      <RenderTodo />
+    </S.Todo>
   )
 }
 

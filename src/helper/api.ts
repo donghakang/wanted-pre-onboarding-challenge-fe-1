@@ -59,7 +59,7 @@ export const createTodo = (title: string, content: string, token: string) => {
       'Content-Type': 'application/json',
       Authorization: token,
     },
-    body: JSON.stringify({ title: title, content: content }),
+    body: JSON.stringify(data),
   })
 }
 

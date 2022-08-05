@@ -1,9 +1,9 @@
-import React from "react";
-import * as S from "./style";
+import React from 'react'
+import * as S from './style'
 
 interface ButtonProps {
-  handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  children: React.ReactNode;
+  handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  children: React.ReactNode
 }
 
 export const Button: React.FC<ButtonProps> = ({ handleClick, children }) => {
@@ -15,5 +15,5 @@ export const Button: React.FC<ButtonProps> = ({ handleClick, children }) => {
         <S.SecondaryButton>{children}</S.SecondaryButton>
       )}
     </>
-  );
-};
+  )
+}

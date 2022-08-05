@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Layout from '../components/Layout/Layout'
 import { useLoginDispatch, useLoginState } from '../context/LoginContext'
 import TodoPage from './TodoPage'
+import Welcome from './Welcome'
 
 const MainPage = () => {
   // check if it is logged in (localStorage)
@@ -16,7 +17,7 @@ const MainPage = () => {
     }
   }, [])
 
-  return <Layout>{token ? <TodoPage /> : <div>환영합니다</div>}</Layout>
+  return <Layout>{token ? <TodoPage /> : <Welcome />}</Layout>
 }
 
 export default MainPage

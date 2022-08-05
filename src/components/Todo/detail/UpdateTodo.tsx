@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { TodoProps } from '../../../@types/todo'
 import { useLoginState } from '../../../context/LoginContext'
-import { createTodo, getTodoById, updateTodo } from '../../../helper/api'
+import { getTodoById, updateTodo } from '../../../helper/api'
 import { Button } from '../../Button'
-import { Input } from '../../Input'
-
-export const UpdateTodo: React.FC<{ id: string; refresh: () => void }> = ({
-  id,
-  refresh,
-}) => {
+import { Input, TextArea } from '../../Input'
+import * as S from '../style'
+export const UpdateTodo: React.FC<{ refresh: () => void }> = ({ refresh }) => {
   const [title, setTitle] = useState<string>('')
   const [content, setContent] = useState<string>('')
   const { token } = useLoginState()
+
+  const navigate = useNavigate()
+  const urlParams = new URLSearchParams(location.search)
+  const id = urlParams.get('id')
 
   useEffect(() => {
     if (id && token) {
@@ -30,32 +32,35 @@ export const UpdateTodo: React.FC<{ id: string; refresh: () => void }> = ({
     setTitle(e.target.value)
   }
 
-  function handleContentChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleContentChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setContent(e.target.value)
   }
 
   function handleUpdateTodo() {
-    updateTodo(id, title, content, token)
-      .then((res) => res.json())
-      .then((data: { data: TodoProps | undefined }) => {
-        refresh()
-      })
+    if (id !== null) {
+      updateTodo(id, title, content, token)
+        .then((res) => res.json())
+        .then((data: { data: TodoProps | undefined }) => {
+          refresh()
+        })
+        .then(() => navigate('/'))
+    }
   }
 
   return (
-    <div>
+    <S.UpdateTodo>
       <h1>Update Todo</h1>
       <Input
         placeholder="제목"
         value={title}
         handleChange={handleTitleChange}
       />
-      <Input
+      <TextArea
         placeholder="내용"
         value={content}
         handleChange={handleContentChange}
       />
       <Button handleClick={handleUpdateTodo}>등록하기</Button>
-    </div>
+    </S.UpdateTodo>
   )
 }
